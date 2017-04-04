@@ -5,13 +5,14 @@ using System.Web;
 
 namespace ToDo.Models
 {
-    public class Value
+    public class Task
     {
         public string Name { get; set; }
+        public string Description { get; set; }
 
-        public Value(string name)
+        public Task(string name)
         {
-            Name = name;
+            Name = name;       
         }
     }
 }

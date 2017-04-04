@@ -18,7 +18,7 @@ export class AuthService {
         localStorage.setItem('expires_in', response.json().expires_in);
         localStorage.setItem('token_type', response.json().token_type);
         localStorage.setItem('userName', response.json().userName);
-        this.router.navigate(['values']);
+        this.router.navigate(['tasks']);
       },
       error => {
         alert(error.text());

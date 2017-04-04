@@ -10,7 +10,7 @@ export class TaskProvider {
   }
 
   public updateTaskList() {
-    const url = 'http://localhost:20133/api/task';
+    const url = 'http://localhost:20133/api/tasks';
     const headers = new Headers({
       'Content-Type': 'applicationjson',
       'Authorization': 'Bearer ' + localStorage.getItem('access_token')

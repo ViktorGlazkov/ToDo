@@ -10,6 +10,12 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using ToDo.Providers;
 using ToDo.Models;
+using Autofac;
+using System.Web.Http;
+using Autofac.Integration.WebApi;
+using System.Reflection;
+using ToDo.Api.Task.Repository;
+using ToDo.Api.Task.Service;
 
 namespace ToDo
 {
@@ -20,7 +26,7 @@ namespace ToDo
         public static string PublicClientId { get; private set; }
         
         public void ConfigureAuth(IAppBuilder app)
-        {
+        {            
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             
@@ -38,6 +44,6 @@ namespace ToDo
             };
             
             app.UseOAuthBearerTokens(OAuthOptions);
-        }
+        }    
     }
 }

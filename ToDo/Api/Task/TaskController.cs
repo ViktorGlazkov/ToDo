@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using ToDo.Api.Task;
+using ToDo.Api.Task.Service;
 using ToDo.Models;
 
 namespace ToDo.Controllers
@@ -12,7 +14,9 @@ namespace ToDo.Controllers
     [RoutePrefix("api")]
     public class ValuesController : ApiController
     {
-        // GET api/values
+        private ITaskService TaskService;
+
+        [AllowAnonymous]
         [Route("tasks"), HttpGet]
         public IEnumerable<Task> Get()
         {
@@ -20,8 +24,8 @@ namespace ToDo.Controllers
             values.Add(new Task("value1"));
             values.Add(new Task("value2"));
             values.Add(new Task("value3"));
-
-            return values;
+            TaskService = new TaskService();
+            return TaskService.GetAll(); ;
         }    
     }
 }

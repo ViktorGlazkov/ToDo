@@ -5,7 +5,11 @@ using System.Web;
 
 namespace ToDo.Api.Task.Repository
 {
-    public class ITaskRepository
+    public interface ITaskRepository
     {
+        List<Task> GetAll();
+        Task GetTaskById(long id);
+        bool EditTask(Task task);
+        bool CreateTask(Task task);
     }
 }

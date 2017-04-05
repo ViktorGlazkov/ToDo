@@ -1,38 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using ToDo.Api.Task.Repository;
 
 namespace ToDo.Api.Task.Service
 {
     public class TaskService : ITaskService
     {
-        private ITaskRepository TaskRepository;
-        public bool CreateTask(Task task)
+        private ITaskRepository taskRepository;
+
+        public TaskService(ITaskRepository taskRepository)
+        {
+            this.taskRepository = taskRepository;
+        }
+
+        public void CreateTask(Task task)
+        {
+            taskRepository.CreateTask(task);
+        }
+
+        public void DeleteTask(long id)
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteTask(long id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool EditTask(Task task)
+        public void EditTask(Task task)
         {
             throw new NotImplementedException();
         }
 
         public List<Task> GetAll()
-        {
-            TaskRepository = new TaskRepository(new ApplicationDbContext());
-            return TaskRepository.GetAll();
+        {            
+            return taskRepository.GetAll();
         }
 
         public Task GetTaskById(long id)
         {
-            throw new NotImplementedException();
+            return taskRepository.GetTaskById(id);
         }
     }
 }

@@ -1,31 +1,35 @@
-﻿using System;
+﻿using Autofac.Integration.WebApi;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using ToDo.Api.Task;
 using ToDo.Api.Task.Service;
-using ToDo.Models;
 
 namespace ToDo.Controllers
 {
     [Authorize]
     [RoutePrefix("api")]
-    public class ValuesController : ApiController
-    {
-        private ITaskService TaskService;
+    [AutofacControllerConfiguration]
+    public class TaskController : ApiController
+    {        
+        private ITaskService taskService;
+
+        public TaskController(ITaskService taskService)
+        {
+            this.taskService = taskService;
+        }
 
         [AllowAnonymous]
         [Route("tasks"), HttpGet]
-        public IEnumerable<Task> Get()
+        public IEnumerable<Task> GetAll()
+        {           
+            return taskService.GetAll(); ;
+        }
+
+        [AllowAnonymous]
+        [Route("tasks/{id}"), HttpGet]
+        public Task GetOne(long id)
         {
-            var values = new List<Task>();
-            values.Add(new Task("value1"));
-            values.Add(new Task("value2"));
-            values.Add(new Task("value3"));
-            TaskService = new TaskService();
-            return TaskService.GetAll(); ;
-        }    
+            return taskService.GetTaskById(id); ;
+        }
     }
 }

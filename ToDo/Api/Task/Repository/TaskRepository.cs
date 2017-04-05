@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ToDo.Api.Task.Repository
 {
@@ -14,14 +13,19 @@ namespace ToDo.Api.Task.Repository
             this.dbContext = dbContext;
         }
 
-        public bool CreateTask(Task task)
+        public void CreateTask(Task task)
         {
             dbContext.Tasks.Add(task);
-            dbContext.SaveChanges();
-            return true;
+            dbContext.SaveChanges();           
         }
 
-        public bool EditTask(Task task)
+        public void DeleteTask(long id)
+        {
+            dbContext.Tasks.Remove(GetTaskById(id));
+            dbContext.SaveChanges();
+        }
+
+        public void EditTask(Task task)
         {
             throw new NotImplementedException();
         }

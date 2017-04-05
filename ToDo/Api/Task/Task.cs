@@ -2,7 +2,6 @@
 
 namespace ToDo.Api.Task
 {
-
     [Table("task")]
     public class Task
     {

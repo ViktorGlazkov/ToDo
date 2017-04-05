@@ -9,8 +9,8 @@ namespace ToDo.Api.Task.Service
     {
         List<Task> GetAll();
         Task GetTaskById(long id);
-        bool EditTask(Task task);
-        bool DeleteTask(long id);
-        bool CreateTask(Task task);
+        void EditTask(Task task);
+        void DeleteTask(long id);
+        void CreateTask(Task task);
     }
 }

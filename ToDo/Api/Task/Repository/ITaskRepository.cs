@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace ToDo.Api.Task.Repository
 {
@@ -9,7 +6,8 @@ namespace ToDo.Api.Task.Repository
     {
         List<Task> GetAll();
         Task GetTaskById(long id);
-        bool EditTask(Task task);
-        bool CreateTask(Task task);
+        void EditTask(Task task);
+        void CreateTask(Task task);
+        void DeleteTask(long id);
     }
 }

@@ -19,15 +19,17 @@ namespace ToDo.Api.Task.Repository
             dbContext.SaveChanges();           
         }
 
-        public void DeleteTask(long id)
+        public void DeleteTask(Task task)
         {
-            dbContext.Tasks.Remove(GetTaskById(id));
+            dbContext.Tasks.Remove(task);
             dbContext.SaveChanges();
         }
 
         public void EditTask(Task task)
         {
-            throw new NotImplementedException();
+            var dbTask = GetTaskById(task.Id);
+            dbContext.Entry(dbTask).CurrentValues.SetValues(task);
+            dbContext.SaveChanges();
         }
 
         public List<Task> GetAll()

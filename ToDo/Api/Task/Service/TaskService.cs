@@ -20,12 +20,13 @@ namespace ToDo.Api.Task.Service
 
         public void DeleteTask(long id)
         {
-            throw new NotImplementedException();
+            var task = GetTaskById(id);
+            taskRepository.DeleteTask(task);
         }
 
         public void EditTask(Task task)
         {
-            throw new NotImplementedException();
+            taskRepository.EditTask(task);
         }
 
         public List<Task> GetAll()

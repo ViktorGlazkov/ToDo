@@ -8,6 +8,6 @@ namespace ToDo.Api.Task.Repository
         Task GetTaskById(long id);
         void EditTask(Task task);
         void CreateTask(Task task);
-        void DeleteTask(long id);
+        void DeleteTask(Task task);
     }
 }

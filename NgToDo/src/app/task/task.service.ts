@@ -12,4 +12,8 @@ export class TaskService {
   public updateTaskList() {
     return this.taskProvider.updateTaskList();
   }
+
+  public getTask() {
+    return this.taskProvider.updateTaskList();
+  }
 }

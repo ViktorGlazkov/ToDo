@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {TaskService} from './task.service';
+import {TaskService} from '../../task.service';
 
 @Component({
   selector: 'app-task-list',
-  templateUrl: './task.component.html'
+  templateUrl: './task-list.component.html'
 })
 
-export class TaskComponent implements OnInit {
+export class TaskListComponent implements OnInit {
   public taskList = [];
 
   private taskService: TaskService;

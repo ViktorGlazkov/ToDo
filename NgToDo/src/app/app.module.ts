@@ -8,18 +8,16 @@ import { AuthComponent } from './auth/auth.component';
 import { MaterialModule } from '@angular/material';
 
 import { RouterModule } from '@angular/router';
-import { appRoutes } from './app.routes';
 import { AuthService } from './auth/auth.service';
 import { AuthProvider } from './auth/auth.provider';
-import {TaskProvider} from './task/task.provider';
-import {TaskService} from './task/task.service';
-import {TaskComponent} from './task/task.component';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { TaskModule } from './task/task.module';
+import { NavbarComponent } from './component/navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AuthComponent,
-    TaskComponent
+    routingComponents,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -27,15 +25,13 @@ import {TaskComponent} from './task/task.component';
     HttpModule,
     MaterialModule,
 
-    RouterModule.forRoot(appRoutes, {
-      useHash: true
-    })
+    TaskModule,
+
+    AppRoutingModule
   ],
   providers: [
     AuthService,
-    AuthProvider,
-    TaskProvider,
-    TaskService
+    AuthProvider
   ],
   bootstrap: [AppComponent]
 })
